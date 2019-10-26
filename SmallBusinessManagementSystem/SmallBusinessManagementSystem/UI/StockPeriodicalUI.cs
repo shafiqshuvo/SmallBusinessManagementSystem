@@ -34,21 +34,33 @@ namespace SmallBusinessManagementSystem.UI
                  stockPeriodical.productName = stockProductTextBox.Text;
                  stockPeriodical.productCategory = stockCategoryTextBox.Text;
 
+                bool isExist = _stockPeriodicalManager.hasProductExist(stockPeriodical);
+                if (isExist)
+                {
+                    stockSearchDataGridView.DataSource = _stockPeriodicalManager.searchStock(stockPeriodical);
+                }
+                else
+                {
+                    MessageBox.Show("No Product Found in the Stock");
+                }
+
+            }
+
+            else if(reorderLevelCheckBox.Checked)
+            {
+                MessageBox.Show("You Want to Search By Lower Reorder Level???");
+                stockSearchDataGridView.DataSource = _stockPeriodicalManager.searchByLosearchBwerreorderLevelStock(stockPeriodical);
             }
            
             else
             {
                 MessageBox.Show("Product Name and Category Must be Required ");
+                return;
             }
 
            
 
-            bool isExist = _stockPeriodicalManager.hasProductExist(stockPeriodical);
-            if (isExist)
-            {
-                stockSearchDataGridView.DataSource = _stockPeriodicalManager.searchStock( stockPeriodical);
-            }
-
+           
             
         }
 

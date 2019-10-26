@@ -24,6 +24,11 @@ namespace SmallBusinessManagementSystem.Manager
         {
             return _stockPeriodicalRepository.hasProductExist(stockPeriodical);
         }
+
+        public List<StockPeriodical> searchByLosearchBwerreorderLevelStock(StockPeriodical stockPeriodical)
+        {
+            return _stockPeriodicalRepository.searchByLosearchBwerreorderLevelStock(stockPeriodical);
+        }
     }
 }
  
